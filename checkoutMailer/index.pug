@@ -1,0 +1,254 @@
+html
+  head
+    title Email template
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0 ')
+    meta(name='format-detection' content='telephone=no')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet')
+    style(type='text/css').
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: Roboto, sans-serif;
+        -webkit-text-size-adjust: 100% !important;
+        -ms-text-size-adjust: 100% !important;
+        -webkit-font-smoothing: antialiased !important;
+      }
+
+      .header-title {
+        font-size: 30px;
+        padding-left: 20px;
+        color: #fff;
+      }
+
+      .shippingHeader {
+        padding-bottom: 12px;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 2px;
+        color: #fbeb59;
+        color: #f05;
+        text-transform: uppercase;
+      }
+
+      .shippingBody {
+        font-size: 16px;
+        line-height: 24px;
+        color: #444;
+      }
+
+      .orderHeader {
+        padding: 12px 0;
+        font-size: 18px;
+        line-height: 24px;
+        color: #f05;
+        text-transform: uppercase;
+        letter-spacing:2px;
+      }
+
+      .orderBodyTitle {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+      }
+
+      .orderBody {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .contactMessage {
+         margin-top: 35px;
+         font-size: 11px;
+      }
+
+      .thanksImg {
+        display: block;
+        width: 100%;
+      }
+
+      .footerSocial {
+        background: #343434;
+        padding: 30px;
+      }
+
+      .footerSocial-td {
+        padding-right: 20px
+      }
+      .footerSocial-td:last-child {
+        padding-right: 0 !important;
+      }
+      .footerSocial-a {
+        text-decoration: none;
+      }
+
+      .footerSocial-img {
+        display: block;
+        max-width: 24px;
+      }
+
+      .companyStatements {
+        background: #343434;
+        padding-bottom: 16px;
+      }
+      .companyStatements a {
+        color: #fff;
+      }
+
+      img {
+        display: block;
+      }
+
+      p {
+        margin: 0px !important;
+        padding: 0px !important;
+      }
+
+      table {
+        border-collapse: collapse;
+        mso-table-lspace: 0px;
+        mso-table-rspace: 0px;
+      }
+
+      td,
+      a,
+      span {
+        border-collapse: collapse;
+        mso-line-height-rule: exactly;
+      }
+
+      .ExternalClass * {
+        line-height: 100%;
+      }
+
+      .em_defaultlink a {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+
+      span.MsoHyperlink {
+        mso-style-priority: 99;
+        color: inherit;
+      }
+
+      span.MsoHyperlinkFollowed {
+        mso-style-priority: 99;
+        color: inherit;
+      }
+
+      @media screen and (max-width: 480px) {
+        .em_main_table {
+          width: 100% !important;
+        }
+
+        .em_wrapper {
+          width: 100% !important;
+        }
+
+        .em_hide {
+          display: none !important;
+        }
+
+        .em_img {
+          width: 100% !important;
+          height: auto !important;
+        }
+
+        .em_h20 {
+          height: 20px !important;
+        }
+
+        .em_padd {
+          padding: 20px 10px !important;
+        }
+
+        .em_text1 {
+          font-size: 16px !important;
+          line-height: 24px !important;
+        }
+
+        u+.em_body .em_full_wrap {
+          width: 100% !important;
+          width: 100vw !important;
+        }
+      }
+
+  body.em_body
+    table(class='em_full_wrap' valign='top' width='100%' cellspacing='0' cellpadding='0' align='center')
+      tbody
+        tr
+          td(valign='top' align='center')
+            table(class='em_main_table' width='100%' align='center')
+              //- Header section
+              tr(bgcolor='#343434')
+                table(style={padding: '20px 10px'})
+                  tr
+                    td
+                      img(src='cid:logo' height='48')
+                    td.header-title E-Store
+              tbody
+                tr
+                  td(style={padding: '35px 50px'} class="em_padd" valign="top" align="center")
+                    table(width="100%" align="center")
+                      tbody
+                        tr
+                          td.shippingHeader(valign="top" align="center") Your Shipping Address
+                        tr
+                          td.shippingBody(valign="top")= 'Email: ' + email
+                        tr
+                          td.shippingBody(valign="top")= 'Address: ' + address
+                        tr
+                          td.shippingBody(valign="top")= 'Phone: ' + phone
+
+                        tr
+                          td.orderHeader(valign="top" align="center") Your Order Total
+                        tr
+                          table(width='100%' cellspacing='10' cellpadding='10')
+                            each item, index in order
+                              tr
+                                td
+                                  img(src=`cid:orderimg${index}` height='200' width='200')
+                                td
+                                  table(width='500')
+                                    tr
+                                      td.orderBodyTitle(valign="top")= item.title
+                                    tr
+                                      td.orderBody(valign="top")= `Gender: ${item.gender.charAt(0).toUpperCase() + item.gender.slice(1)}'s`
+                                    tr
+                                      td.orderBody(valign="top")= `Color: ${item.color.charAt(0).toUpperCase() + item.color.slice(1)}`
+                                    tr
+                                      td.orderBody(valign="top")= `Size: ${item.size}`
+                                    tr
+                                      td.orderBody(valign="top")= `Quantity: ${item.qty}`
+                        tr
+                          td.contactMessage(valign="top" align="center") If there are any problems with this order you can contact us directily with this email estore@gmail.com or call 0991239912
+        tr
+          td(valign="top" align="center")
+            img(class="em_img thanksImg" alt="img" width='100%' src="cid:order")
+
+        tr
+          td.footerSocial(class="em_padd" valign="top" align="center")
+            table(width="100%" cellspacing="0" cellpadding="0" border="0" align="center")
+              tbody
+                tr
+                  td(style={ paddingBottom: '16px'} valign="top" align="center")
+                    table(cellspacing="0" cellpadding="0" border="0" align='center')
+                      tbody
+                        tr
+                          td.footerSocial-td(valign="top" align="center")
+                            a.footerSocial-a(href="#" target="_blank")
+                              img.footerSocial-img(src="cid:facebook" alt="fb" width="24" height="24")
+                          td.footerSocial-td(valign="top" align="center")
+                            a.footerSocial-a(href="#" target="_blank")
+                              img.footerSocial-img(src="cid:twitter" alt="tw" width="24" height="24")
+                          td.footerSocial-td(valign="top" align="center")
+                            a.footerSocial-a(href="#" target="_blank")
+                              img.footerSocial-img(src="cid:youtube" alt="yt" width="24" height="24")
+        tr
+          td.companyStatements(style="font-size: 11px; line-height: 18px; color: #fff;" valign="top" align="center")
+            a(href="#" target="_blank") PRIVACY STATEMENT
+            span  |
+            a(href="#" target="_blank")  TERMS OF SERVICE
+            span  |
+            a(href="#" target="_blank")  RETURNS
+            p © 2017 Companyname. All Rights Reserved.
