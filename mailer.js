@@ -1,4 +1,5 @@
-
+require('dotenv').config();
+const nodemailer = require('nodemailer');
 
 // Transparter Setup
 const transporter = nodemailer.createTransport(
@@ -19,6 +20,8 @@ const transporter = nodemailer.createTransport(
 )
 
 // Create transporter mailer function
-const send = message => transporter.sendMail({ ...message }, (err, info) => err ? console.log(err) : console.log(`Email sent: ` + info));
+const send = message => transporter.sendMail({ ...message }, (err, info) => {
+  return err ? console.log(err) : console.log(`Email sent: ` + info)
+})
 
-module.export = send
+module.exports.send = send
